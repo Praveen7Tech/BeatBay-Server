@@ -17,5 +17,8 @@ export class UserRoutes extends BaseRoute {
         this.router.post("/signup",(req,res)=>{
             userController.signup(req,res)
         })
+        this.router.post("/verify-otp",(req,res)=>{
+            userController.verifyOtp(req,res)
+        })
     }
 }

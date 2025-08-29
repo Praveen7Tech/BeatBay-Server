@@ -13,7 +13,20 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type:String,
+    },
+    role: {
+        type:String,
+        enum:["user","artist","admin"],
+        default:"user"
+    },
+    isBlocked: {
+        type: Boolean,
+        default: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
     }
 })
 
-export default mongoose.model("UserModel", UserSchema)
+export default mongoose.model("Users", UserSchema)

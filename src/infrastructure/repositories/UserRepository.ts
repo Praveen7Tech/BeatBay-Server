@@ -4,18 +4,18 @@ import UserModel from "../../framework/database/models/UserModel.js";
 
 export class UserRepository implements IUserRepository {
     async findByEmail(email: string){
-        return UserModel.findOne({email})
+        return OtpModel.findOne({email})
     }
 
-    async saveOTP(email: string, otp: string){
+    async saveOTP(name:string,email: string, otp: string, password:string){
         await OtpModel.findOneAndUpdate(
             {email},
-            {otp, createdAt: new Date()},
+            {name,email,otp,password, createdAt: new Date()},
             {upsert: true}
         )
     }
 
-    async createUser(data :{name: string, email: string, password: string}){
+    async createUser(data :{name: string, email: string, password: string, role:string, isBlocked: boolean, createdAt:Date}){
         const user = new UserModel(data)
         user.save()
     }
