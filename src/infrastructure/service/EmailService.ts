@@ -34,7 +34,7 @@ export class EmailService implements IEmailService {
     
 
     async sendOTP(email: string, otp: string): Promise<void> {
-        console.log("email service reach",email)
+        console.log("email service reach",process.env.API_EMAIL)
         await this.transporter.sendMail({
             from:process.env.API_EMAIL,
             to:email,

@@ -4,8 +4,13 @@ import UserModel from "../../framework/database/models/UserModel.js";
 
 export class UserRepository implements IUserRepository {
     async findByEmail(email: string){
-        return OtpModel.findOne({email})
+        return UserModel.findOne({email})
     }
+
+    async findByEmailOTP(email: string){
+            return OtpModel.findOne({email})
+    }
+    
 
     async saveOTP(name:string,email: string, otp: string, password:string){
         await OtpModel.findOneAndUpdate(

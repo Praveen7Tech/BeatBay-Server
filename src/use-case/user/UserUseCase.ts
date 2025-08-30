@@ -26,7 +26,7 @@ export class UserUseCase {
 
     async verifyOTP(email:string, otp: string,) : Promise<void> {
         console.log("1 reach",email, otp)
-        const storedOtp = await this.userRepo.findByEmail(email)
+        const storedOtp = await this.userRepo.findByEmailOTP(email)
         console.log("stored-",storedOtp)
         if(!storedOtp || storedOtp.otp !== otp){
             throw new Error("Invalid or Expired otp")

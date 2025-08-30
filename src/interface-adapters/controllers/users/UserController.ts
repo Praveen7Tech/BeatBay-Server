@@ -32,4 +32,17 @@ export class UserController implements IUserController {
             res.status(400).json({success: false, message: error.message})
         }
     }
+
+    async resendOtp(req:Request, res:Response): Promise<void> {
+        try {
+            const {email} = req.body;
+            if(!email){
+                throw new Error("Email not found")
+            }
+
+            await this.userUseCase.signUp
+        } catch (error) {
+            
+        }
+    }
 }
